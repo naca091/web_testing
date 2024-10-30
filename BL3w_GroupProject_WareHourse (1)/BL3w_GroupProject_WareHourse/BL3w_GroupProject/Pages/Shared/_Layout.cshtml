@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BL3w_GroupProject.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #5680E9; /* Main color */
+            margin-bottom: 60px;
+        }
+
+        .header-container {
+            background-color: #5680E9; /* Main color */
+            color: #C1C8E4; /* Light gray for contrast */
+            padding: 20px;
+            text-align: center;
+        }
+
+            .header-container h1 {
+                font-size: 36px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            .header-container p {
+                font-size: 18px;
+                font-weight: 400;
+                margin-bottom: 20px;
+            }
+
+        .nav-container {
+            background-color: #C1C8E4; /* Light gray */
+            padding: 10px;
+            text-align: center;
+        }
+
+            .nav-container ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .nav-container li {
+                display: inline-block;
+                margin-right: 20px;
+            }
+
+            .nav-container a {
+                color: #5680E9; /* Main color */
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+                .nav-container a:hover {
+                    color: #84CEE; /* Light green */
+                }
+
+        .main-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+            .main-container .card {
+                background-color: #C1C8E4; /* Light gray */
+                border: 1px solid #5AB9EA; /* Light blue */
+                border-radius: 10px;
+                margin: 20px;
+                padding: 20px;
+                width: 300px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+                .main-container .card h2 {
+                    font-size: 24px;
+                    font-weight: 700;
+                    margin-bottom: 10px;
+                    color: #8860D0; /* Deep purple */
+                }
+
+                .main-container .card p {
+                    font-size: 18px;
+                    font-weight: 400;
+                    margin-bottom: 20px;
+                    color: #333; /* Dark gray */
+                }
+
+        .footer-container {
+            background-color: #5680E9; /* Main color */
+            color: #C1C8E4; /* Light gray for contrast */
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+            .footer-container a {
+                color: #C1C8E4; /* Light gray for contrast */
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+                .footer-container a:hover {
+                    color: #84CEE; /* Light green */
+                }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1>FPT Warehouse</h1>
+        <p>Welcome to our website!</p>
+    </div>
+    <div class="nav-container">
+        <ul>
+            <li><a asp-area="" asp-page="/Index">Home</a></li>
+            <li><a asp-area="" asp-page="/Privacy">Privacy</a></li>
+            <li><a asp-area="" asp-page="/Login">Login</a></li>
+        </ul>
+    </div>
+    <div class="main-container">
+        @RenderBody()
+    </div>
+    <div class="footer-container">
+        <a asp-area="" asp-page="/Privacy">Privacy</a>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

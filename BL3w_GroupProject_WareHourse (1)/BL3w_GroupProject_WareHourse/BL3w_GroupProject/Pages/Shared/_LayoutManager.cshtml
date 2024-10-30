@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BL3w_GroupProject.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F0E6E6; /* Soft Pink */
+            margin-bottom: 40px;
+        }
+
+        nav {
+            background-color: #5680E9; /* Main color */
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+
+        a.navbar-brand {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000000; /* Black */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-item {
+            margin-right: 10px;
+        }
+
+        a.nav-link, button.nav-link {
+            font-weight: 500;
+            color: #000000; /* Black */
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+            a.nav-link:hover, button.nav-link:hover {
+                background-color: #84CEE; /* Light green */
+                color: #5680E9; /* Main color */
+            }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 8px 16px rgba(0,0,0,.1);
+            background-color: #F0E6E6; /* Soft Pink */
+        }
+
+        .dropdown-item {
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+            color: #5E3A3A; /* Deep Brown */
+        }
+
+            .dropdown-item:hover {
+                background-color: #E8B4B8; /* Light Pink */
+            }
+
+        .btn-primary {
+            background-color: #A67B5B; /* Warm Brown */
+            border-color: #A67B5B;
+            color: #F0E6E6; /* Soft Pink */
+        }
+
+            .btn-primary:hover {
+                background-color: #8C6D4F;
+                border-color: #8C6D4F;
+            }
+
+        .container {
+            background-color: #FFF5F5; /* Very Light Pink */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,.05);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .footer {
+            background-color: #5680E9; /* Main color */
+            color: #000000; /* Black */
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+            .footer a {
+                color: #000000; /* Black */
+                transition: color 0.3s ease;
+            }
+
+                .footer a:hover {
+                    color: #84CEE; /* Light green */
+                    text-decoration: none;
+                }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-page="/Manager/ManagerProductList">FPT Warehouse</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Manager/ProductPage/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Manager/CategoryPage/ListCategory">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Manager/ProductPage/Index">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Manager/LotPage/Index">Stock In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Manager/PartnerPage/Index">Partners</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Manager/StoragePage/ListStorage">Storage Areas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Manager/StockOutPage/StockOutList">Stock Out</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Chat"><i class="fa-solid fa-headset"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="logoutButton" href="#"><i class="fa-solid fa-right-from-bracket"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            $('#logoutButton').on('click', function () {
+                var confirmLogout = confirm("Are you sure you want to logout?");
+                if (confirmLogout) {
+                    window.location.href = '/Logout';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

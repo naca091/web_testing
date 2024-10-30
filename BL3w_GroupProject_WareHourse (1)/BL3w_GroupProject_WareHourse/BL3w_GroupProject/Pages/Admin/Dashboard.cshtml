@@ -1,0 +1,150 @@
+﻿@page
+@model BL3w_GroupProject.Pages.Admin.DashboardModel
+@{
+    Layout = "/Pages/Shared/_LayoutAdmin.cshtml";
+}
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<style>
+    .group-box {
+        border-radius: 8px;
+        background-color: #4169E1; /* Royal Blue */
+        text-align: center;
+        padding: 20px;
+        margin: 10px;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+        .group-box p {
+            margin: 0 .group-box:hover
+
+    {
+        background-color: #034ea2;
+    }
+
+    .chart-container {
+        width: 450px;
+        height: 500px;
+        background-color: #fff7ef;
+        padding: 20px;
+        border-radius: 4px;
+        margin: 20px;
+    }
+
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-2">
+            <fieldset class="group-box">
+                <legend>Products</legend>
+                <p>@Model.ProductCount</p>
+            </fieldset>
+        </div>
+        <div class="col-md-2">
+            <fieldset class="group-box">
+                <legend>StockIns</legend>
+                <p>@Model.LotCount</p>
+            </fieldset>
+        </div>
+        <div class="col-md-2">
+            <fieldset class="group-box">
+                <legend>Accounts</legend>
+                <p>@Model.AccountCount</p>
+            </fieldset>
+        </div>
+        <div class="col-md-2">
+            <fieldset class="group-box">
+                <legend>Partners</legend>
+                <p>@Model.PartnerCount</p>
+            </fieldset>
+        </div>
+        <div class="col-md-2">
+            <fieldset class="group-box">
+                <legend>Categories</legend>
+                <p>@Model.CategoryCount</p>
+            </fieldset>
+        </div>
+        <div class="col-md-2">
+            <fieldset class="group-box">
+                <legend>StockOuts</legend>
+                <p>@Model.StockOutCount</p>
+            </fieldset>
+        </div>
+    </div>
+    <div class="row">
+        <div class="row justify-content-center">
+            <div class="col-md-5 chart-container" style="background-color: #fff7ef; padding: 20px; border-radius: 4px; margin: 20px">
+                <div>
+                    <h4 class="text-center">Stock Out & Stock In</h4>
+                    <canvas id="chart1" style="width: 150px; height: 150px;"></canvas>
+                </div>
+            </div>
+            <div class="col-md-5 chart-container" style="background-color: #fff7ef; padding: 20px; border-radius: 4px; margin: 20px">
+                <div>
+                    <h4 class="text-center">Account</h4>
+                    <canvas id="chart2" style="width: 150px; height: 150px;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const ctx = document.getElementById('chart1');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['StockOut', 'StockIn'],
+            datasets: [{
+                label: 'Compare StockOut & StockIn',
+                data: [@Model.StockOutCount, @Model.LotCount],
+                backgroundColor: [
+                    '#21a4f3'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+
+<script>
+    const ctx1 = document.getElementById('chart2');
+
+    new Chart(ctx1, {
+        type: 'pie',
+        data: {
+            labels: ['Active', 'In Active'],
+            datasets: [{
+                label: 'Account active & inactive',
+                data: [@Model.Account1, @Model.Account0],
+                backgroundColor: [
+                    '#21a4f3',
+                    '#21f370'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
